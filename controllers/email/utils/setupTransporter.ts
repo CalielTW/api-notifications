@@ -33,9 +33,9 @@ export const setupTransporter = (
         hbs({
             viewEngine: {
                 extname: EMAIL_HANDLEBARS_EXTENSION,
-                partialsDir: path.resolve(EMAIL_HANDLEBARS_PATH),
-                layoutsDir: viewPath,
-                defaultLayout: '',
+                partialsDir: viewPath,
+                layoutsDir: `${viewPath}/layouts`,
+                defaultLayout: 'main',
             },
             viewPath,
             extName: EMAIL_HANDLEBARS_EXTENSION,

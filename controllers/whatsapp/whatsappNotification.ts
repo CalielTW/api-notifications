@@ -16,6 +16,9 @@ import { extractPlaceholders, createTemplateParams, formatPhone } from './utils'
 import { decodeToken } from '@utils/decodeToken'
 import axios from 'axios'
 
+const WHATSAPP_URL = "https://graph.facebook.com"
+const WHATSAPP_VERSION = "v17.0"
+
 /**
  * WhatsApp Notification handler
  * @description Sends a WhatsApp message template using the provided credentials and data
@@ -30,7 +33,8 @@ export const whatsappNotification = asyncHandler(
         if (!token) return next(new ErrorResponse(MISSIN_TOKEN_ERROR_CODE, 400))
 
         const decodedData = decodeToken(token, next)
-        if (!decodedData) return
+        if (!decodedData) 
+            return next(new ErrorResponse(INVALID_TOKEN_ERROR_CODE, 401))
 
         const { wspAccount, wspToken } = decodedData
         const { phone, params, templateTitle, template } = req.body
@@ -65,7 +69,7 @@ export const whatsappNotification = asyncHandler(
         }
 
         // Send WhatsApp message via API
-        const url = `https://graph.facebook.com/v17.0/${wspAccount}/messages?access_token=${wspToken}`
+        const url = `${WHATSAPP_URL}/${WHATSAPP_VERSION}/${wspAccount}/messages?access_token=${wspToken}`
         try {
             await axios.post(url, data, config)
             res.status(200).json({ success: true })

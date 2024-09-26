@@ -1,11 +1,9 @@
-import { IUser } from 'types'
 import { JwtPayload } from 'jsonwebtoken'
 
 export interface IEmailConstructor {
     host: string
     email: string
     hostEmail: string
-    user: IUser
     subject: string
     decodedData: JwtPayload
 }

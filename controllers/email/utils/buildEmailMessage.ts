@@ -10,7 +10,6 @@ export const buildEmailMessage = ({
     host,
     email,
     hostEmail,
-    user,
     subject,
     decodedData,
 }: IEmailConstructor) => {
@@ -19,12 +18,9 @@ export const buildEmailMessage = ({
     return {
         from: rename,
         to: email,
-        replyTo: user.email || '',
-        subject,
         context: {
             ...decodedData,
-            user,
         },
-        template: host,
+        template: subject,
     }
 }

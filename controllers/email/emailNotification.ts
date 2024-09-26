@@ -25,11 +25,12 @@ export const emailNotification = asyncHandler(
         const { token } = req.body
         if (!token) return next(new ErrorResponse(MISSIN_TOKEN_ERROR_CODE, 400))
 
-        const decodedData = decodeToken(token, next)
-        if (!decodedData) return
+        const decodedData = decodeToken(token, next, "secretkey")
+        if (!decodedData)
+            return next(new ErrorResponse(INVALID_TOKEN_ERROR_CODE, 401))
 
         const { host, port, email, hostEmail, password } = decodedData
-        const { user, subject } = req.body
+        const { subject } = req.body
 
         const transporter = setupTransporter(host, port, hostEmail, password)
         if (!transporter)
@@ -39,7 +40,6 @@ export const emailNotification = asyncHandler(
             host,
             email,
             hostEmail,
-            user: user,
             subject,
             decodedData,
         })
