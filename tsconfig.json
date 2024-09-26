@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["dom", "es6"],
+        "outDir": "./dist",
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "paths": {
+            "@constants/*": ["constants/*"],
+            "@utils/*": ["utils/*"],
+            "@routes/*": ["routes/*"],
+            "@controllers/*": ["controllers/*"],
+            "@middleware/*": ["middleware/*"],
+            "@config/*": ["config/*"]
+        },
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules", "dist"]
+}

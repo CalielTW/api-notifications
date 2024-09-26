@@ -1,0 +1,11 @@
+name: Github Actions
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [pull_request]
+jobs:
+    build:
+        name: Github Actions for Warbox Calls Backend
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - run: yarn
+            - run: yarn lint

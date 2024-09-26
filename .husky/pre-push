@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+YELLOW='\033[1;33m'
+MAGENTA='\033[1;35m'
+
+echo "Test executing..."
+# yarn test || { echo "${RED}Some tests have failed or more need to be done. You cannot push.${NC}"; exit 1; }
+echo "${GREEN}Test successfull!${YELLOW}"

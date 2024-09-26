@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+config/config.env
+package-lock.json
+.ngrock
+ngrok
+dump.rdb
+config/config.env.env
+dist/
+coverage
+.env
+.vscode/settings.json
